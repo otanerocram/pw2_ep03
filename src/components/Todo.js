@@ -6,7 +6,7 @@ export default function Todo({todo, index, remove}) {
   }
   return (
     <div className="todo" onClick={handle}>
-      {todo.text} (-)
+      {todo.task} (-)
     </div>
   );
 }
