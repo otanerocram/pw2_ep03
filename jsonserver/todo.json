@@ -1,0 +1,7 @@
+{
+    "todos": [
+        { "id": 1, "task": "ep03", "done": false, "author": "Marco Beltran" },
+        { "id": 2, "task": "ep03", "done": false, "author": "Kaory Rodriguez" },
+        { "id": 3, "task": "ep03", "done": false, "author": "Sebastián Lévano" }
+    ]
+}

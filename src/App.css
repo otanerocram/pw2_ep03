@@ -1,0 +1,46 @@
+.App {
+  text-align: center;
+  background-color: darkcyan;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+  height: 100vh;
+}
+
+.my-container {
+  background-color: aliceblue;
+}
+
+.my-card{
+  width: 50%;
+  height: 50%;
+  max-height: 50%;
+  overflow-y: scroll;
+}
+
+.my-app-title {
+  display: flex;
+  justify-content: center;
+  padding-top: 26px;
+}
+
+.my-flex {
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+  height: 100vh;
+}
+
+.todo {
+  background: #fff;
+  box-shadow: 1px 1px 1px rgba(0,0,0, 0.15);
+  padding: 3px 10px;
+  font-size: 2rem;
+  margin-bottom: 6px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
