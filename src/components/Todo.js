@@ -2,8 +2,7 @@ import { useState } from "react";
 import { BsFillTrashFill, BsCheckCircleFill } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
 import { RiEdit2Fill } from "react-icons/ri";
-import { Button } from "react-bootstrap";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 export default function Todo({ todo, index, remove, update }) {
     const [taskName, setTaskName] = useState(todo.task);

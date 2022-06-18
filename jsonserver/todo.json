@@ -2,17 +2,17 @@
   "todos": [
     {
       "task": "terminar la ep 1",
-      "done": true,
+      "done": false,
       "id": 1
     },
     {
-      "task": "terminar la ep2",
+      "task": "terminar la ep2 aantes ",
       "done": true,
       "id": 2
     },
     {
       "task": "terminar el examen parcial bien",
-      "done": true,
+      "done": false,
       "id": 3
     },
     {
