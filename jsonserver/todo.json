@@ -1,7 +1,29 @@
 {
-    "todos": [
-        { "id": 1, "task": "ep03", "done": false, "author": "Marco Beltran" },
-        { "id": 2, "task": "ep03", "done": false, "author": "Kaory Rodriguez" },
-        { "id": 3, "task": "ep03", "done": false, "author": "Sebastián Lévano" }
-    ]
+  "todos": [
+    {
+      "task": "terminar la ep 1",
+      "done": true,
+      "id": 1
+    },
+    {
+      "task": "terminar la ep2",
+      "done": true,
+      "id": 2
+    },
+    {
+      "task": "terminar el examen parcial bien",
+      "done": true,
+      "id": 3
+    },
+    {
+      "task": "terminar la ep 3",
+      "done": false,
+      "id": 4
+    },
+    {
+      "task": "terminar la ep 4",
+      "done": false,
+      "id": 5
+    }
+  ]
 }

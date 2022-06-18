@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Button, InputGroup } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 const TodoForm = ({ addTodo }) => {
@@ -15,20 +15,28 @@ const TodoForm = ({ addTodo }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!value) return myAlert("You need to add elements");
-        addTodo(value);
+        if (!value) return myAlert("No se puede agregar una tarea vacía");
+        addTodo({
+            task: value,
+            done: false,
+        });
         setValue("");
     };
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Control
-                type="text"
-                value={value}
-                size="lg"
-                placeholder="Add Todo ..."
-                onChange={(e) => setValue(e.target.value)}
-            />
+            <InputGroup className="mb-3">
+                <Form.Control
+                    type="text"
+                    value={value}
+                    size="lg"
+                    placeholder="Agregar Tarea..."
+                    onChange={(e) => setValue(e.target.value)}
+                />
+                <Button variant="primary" type="submit">
+                    Nueva Tarea
+                </Button>
+            </InputGroup>
         </Form>
     );
 };
