@@ -1,61 +1,72 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./App.css";
+import { TodoContext } from "./context/TodoContext";
 import TodoForm from "./components/TodoForm";
 import Todo from "./components/Todo";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import useTodos from "./hooks/useTodos";
 
 function App() {
-    const [todos, setTodos] = useState([]);
-    const [shouldFetch, reFetch] = useState({});
-
-    const addTodo = (text) => {
-        const newTodos = [{ text: text, isCompleted: false }, ...todos];
-        setTodos(newTodos);
-    };
-
-    const removeTodo = (index) => {
-        let temp = [...todos];
-        temp.splice(index, 1);
-        setTodos(temp);
-    };
-
-    const reloadTodos = async () => {
-        const todoRespoonse = await fetch("http://localhost:4000/todos");
-        const todoList = await todoRespoonse.json();
-        setTodos(todoList);
-    };
+    const { state } = useContext(TodoContext);
+    const { addTodo, removeTodo, getTodos, updateTodo } = useTodos();
+    const [shouldFetch] = useState({});
 
     useEffect(() => {
-        reloadTodos();
+        getTodos();
+        /* eslint-disable-next-line */
     }, [shouldFetch]);
 
     return (
         <Container fluid>
             <Row>
+                <Col>
+                    <h1>Programación Web II - EP03</h1>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <TodoForm addTodo={addTodo} />
+                </Col>
+            </Row>
+            <Row>
                 <Col xs={12} className="App">
                     <Card className="my-card">
-                        <Card.Title className="my-app-title">
-                            <h1>Todo List App</h1>
-                        </Card.Title>
+                        <Card.Title className="my-app-title">Tareas por realizar</Card.Title>
                         <Card.Body>
                             <div className="my-container">
-                                <TodoForm addTodo={addTodo} />
-                                {todos.map((todo, i) => (
-                                    <Todo index={i} key={i} todo={todo} remove={removeTodo} />
-                                ))}
+                                {state?.todoList?.length
+                                    ? state?.todoList
+                                          ?.filter((todo) => !todo.done)
+                                          .map((todo) => (
+                                              <Todo
+                                                  index={todo.id}
+                                                  key={todo.id}
+                                                  todo={todo}
+                                                  remove={removeTodo}
+                                                  update={updateTodo}
+                                              />
+                                          ))
+                                    : "no hay tareas"}
                             </div>
                         </Card.Body>
                     </Card>
                     <Card className="my-card">
-                        <Card.Title className="my-app-title">
-                            <h1>Todo List App</h1>
-                        </Card.Title>
+                        <Card.Title className="my-app-title">Tareas realizadas</Card.Title>
                         <Card.Body>
                             <div className="my-container">
-                                <TodoForm addTodo={addTodo} />
-                                {todos.map((todo, i) => (
-                                    <Todo index={i} key={i} todo={todo} remove={removeTodo} />
-                                ))}
+                                {state?.todoList?.length
+                                    ? state?.todoList
+                                          ?.filter((todo) => todo.done)
+                                          .map((todo) => (
+                                              <Todo
+                                                  index={todo.id}
+                                                  key={todo.id}
+                                                  todo={todo}
+                                                  remove={removeTodo}
+                                                  update={updateTodo}
+                                              />
+                                          ))
+                                    : "no hay tareas"}
                             </div>
                         </Card.Body>
                     </Card>
